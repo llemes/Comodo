@@ -1,0 +1,27 @@
+{
+  "name": "comodo-backend",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/llemes/Comodo.git"
+  },
+  "author": "Lamija Lemeš",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/llemes/Comodo/issues"
+  },
+  "homepage": "https://github.com/llemes/Comodo#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "config": "^1.30.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.0"
+  }
+}
