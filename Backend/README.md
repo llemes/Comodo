@@ -2,9 +2,13 @@
 
 ## How to run
 
-To start the API server, all you need to do is type 
+Install missing dependencies: 
+```
+npm install
+```
+Start the API server: 
 ```
 npm start
 ```
 
-## API routes
+// ## API routes
