@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const db = require('./db');
 
-app.use(cors());
 app.use(bodyParser.json());
 
 app.use(function(err, req, res, next) {
