@@ -2,8 +2,17 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ResourceTypeSchema = new Schema({
-    name: String,
-    imageUrl: String
+    name: {
+        type: String,
+        required: true,
+        unique: true,
+        dropDups: true
+    },
+    imageUrl: {
+        type: String
+    }
 });
 
-module.exports = mongoose.model('ResourceType');
+ResourceTypeSchema.plugin(require('mongoose-unique-validator'));
+
+module.exports = mongoose.model('ResourceType', ResourceTypeSchema);
