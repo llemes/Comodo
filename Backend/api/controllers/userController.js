@@ -43,8 +43,6 @@ exports.delete_a_user = function(req, res) {
         if(err) {
             res.send(err);
         }
-        res.json({
-            message: 'Delete of user ' + user.username + ' (' + user.fullName + ') successful.'
-        })
+        res.json(user);
     });
 }

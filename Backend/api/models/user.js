@@ -25,6 +25,11 @@ var UserSchema = new Schema({
     role: {
         type: String,
         required : true
+    },
+    organisationId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Organisation',
+        required: true
     }
 });
 

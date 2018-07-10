@@ -30,7 +30,7 @@ exports.create_a_resource_type = function(req, res) {
 }
 
 exports.update_a_resource_type = function(req, res) {
-    ResourceType.findByIdAndUpdate(req.params.resourceTypeId, function(err, resourceType) {
+    ResourceType.findByIdAndUpdate(req.params.resourceTypeId, req.body, { new: true }, function(err, resourceType) {
         if(err) {
             res.send(err);
         }
@@ -43,8 +43,6 @@ exports.delete_a_resource_type = function(req, res) {
         if(err) {
             res.send(err);
         }
-        res.json({
-            message: 'Delete of resource type ' + resourceType.name + ' successful.'
-        });
+        res.json(resourceType);
     });
 }

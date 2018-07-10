@@ -22,6 +22,10 @@ const userRoutes = require('./api/routes/userRoutes');
 userRoutes(app, apiRoute);
 const resourceTypeRoutes = require('./api/routes/resourceTypeRoutes');
 resourceTypeRoutes(app, apiRoute);
+const resourceRoutes = require('./api/routes/resourceRoutes');
+resourceRoutes(app, apiRoute);
+const organisationRoutes = require('./api/routes/organisationRoutes');
+organisationRoutes(app, apiRoute);
 
 app.listen(process.env.PORT || 8080);
 console.log('Listening on port 8080');

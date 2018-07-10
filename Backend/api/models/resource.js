@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var uniqueValidator = require('mongoose-unique-validator');
 var Schema = mongoose.Schema;
 
 var ResourceSchema = new Schema({
@@ -8,13 +7,21 @@ var ResourceSchema = new Schema({
         required : true,
     },
     occupied: {
-        type: Booelan,
+        type: Boolean,
         required : true,
     },
-    occupiedUntil: Date,
-    resourceType: {
+    occupiedUntil: {
+        type: Date
+    },
+    resourceTypeId: {
         type: Schema.Types.ObjectId,
-        ref: 'ResourceType'
+        ref: 'ResourceType',
+        required: true
+    },
+    organisationId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Organisation',
+        required: true
     }
 });
 
