@@ -1,5 +1,14 @@
 # Comodo backend
 
+<!-- toc -->
+- [How to run](#how-to-run)
+- [API routes](#api-routes)
+    * [/organisations](#organisations)
+    * [/users](#users)
+    * [/resourcetypes](#resourcetypes)
+    * [/resources](#resources)
+<!-- tocstop -->
+
 ## How to run
 
 Install missing dependencies: 
