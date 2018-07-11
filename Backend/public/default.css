@@ -1,0 +1,21 @@
+body {
+    background-color: #f6f8fa;
+}
+
+p {
+    margin-top: 1rem;
+}
+
+.code {
+    background-color: #f6f8fa;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre;
+}
+
+.card {
+    background-color: white;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 2%;
+    height: 90%;
+}
