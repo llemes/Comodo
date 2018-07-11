@@ -10,10 +10,13 @@ const db = require('./db');
 app.use(cors);
 app.use(bodyParser.json());
 
-app.get('/', function(req, res) {
-    res.send('API works.');
-});
-
+var options = {
+    index: "default.html"
+};
+  
+app.use('/', express.static('public', options));
+  
+const routes = require('./api/routes/routes');
 routes(app);
 
 const port = process.env.PORT || 8080;

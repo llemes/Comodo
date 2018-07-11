@@ -81,7 +81,7 @@ Sample object for POST/PUT:
 {
     "name": "Some name",
     "occupied": false,
-    "resourceType": "existingResourceTypeId",
+    "resourceTypeId": "existingResourceTypeId",
     "organisationId": "existingOrganisationId"
 }
 ```

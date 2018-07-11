@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="default.css" rel="stylesheet" type="text/css">
+    <title>Comodo Web API</title>
+</head>
+<body>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+
+                <div class="card">
+                    
+                    <h1 id="apiroutes">API routes</h2>
+
+                    <hr>
+    
+                    <p>All routes listed below follow the same pattern: </p>
+                    <p>/route</p>
+            
+                    <ul>
+                    <li>GET: gets all entries</li>
+            
+                    <li>POST: creates an entry</li>
+                    </ul>
+            
+                    <p>/route/id</p>
+            
+                    <ul>
+                    <li>GET: gets entry with appropriate id</li>
+            
+                    <li>PUT: updates entry with appropriate id</li>
+            
+                    <li>DELETE: deletes entry with appropriate id</li>
+                    </ul>
+
+                </div>
+
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-6 col-md-12">
+                <div class="card">
+                    <h3 id="users">
+                        <a href="/api/users">
+                            /users
+                        </a>
+                    </h3>
+        
+                    <hr>
+
+                    <p>Sample object for POST/PUT:</p>
+            
+                    <div class="code">
+                        <code>
+    {
+        "fullName": "John Doe",
+        "email": "john.doe@example.com",
+        "username": "johndoe",
+        "password": "mypassword",
+        "role": "member",
+        "organisationId": "existingOrganisationId"
+    }
+                        </code>
+                    </div>
+                    
+                    <p>
+                        Note: full name is required. E-mail is required and must be unique. Username is required and must be unique. Password is required.
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-6 col-md-12">
+                <div class="card">
+                    <h3 id="resources">
+                        <a href="/api/resources">
+                            /resources
+                        </a>
+                    </h3>
+
+                    <hr>
+        
+                    <p>Sample object for POST/PUT:</p>
+            
+                    <div class="code">
+                        <code>
+    { 
+        "name": "Some name",
+        "occupied": false,
+        "resourceTypeId": "existingResourceTypeId",
+        "organisationId": "existingOrganisationId"
+    }
+                        </code>  
+                    </div>
+            
+                    <p>Note: occupied is a boolean value</p>
+                </div>
+            </div>
+            <div class="col-xl-6 col-md-12">
+                <div class="card">
+                    <h3 id="resourcetypes">
+                        <a href="/api/resourcetypes">
+                            /resourcetypes
+                        </a>
+                    </h3>
+
+                    <hr>
+        
+                    <p>Sample object for POST/PUT:</p>
+            
+                    <div class="code">
+                        <code>
+    {
+        "name": "Required Unique Name",
+        "imageUrl": "https://imgur.com/example"
+    }
+                        </code>
+                    </div>
+            
+                    <p>Note: name must be unique</p>
+                </div>
+            </div>
+            <div class="col-xl-6 col-md-12">
+                <div class="card">
+                    <h3 id="organisations">
+                        <a href="/api/organisations">
+                            /organisations
+                        </a>
+                    </h3>
+
+                    <hr>
+        
+                    <p>Sample object for POST/PUT:</p>
+            
+                    <div class="code">
+                        <code>
+    {
+        "name": "Organisation Name"
+    }
+                        </code>
+                    </div>
+            
+                    <p>Note: name is required and must be unique.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
