@@ -6,6 +6,18 @@ p {
     margin-top: 1rem;
 }
 
+#header-div p {
+    font-weight: bold;
+}
+
+#header-div ul {
+    list-style-type: none;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
 .code {
     background-color: #f6f8fa;
     font-family: 'Courier New', Courier, monospace;
