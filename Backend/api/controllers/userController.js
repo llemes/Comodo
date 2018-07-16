@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var jwt = require('jsonwebtoken');
+var config = require('../../config');
 
 exports.list_all_users = function(req, res) {
     User.find({}, function(err, user) {
@@ -24,8 +26,14 @@ exports.create_a_user = function(req, res) {
     newUser.save(function(err, user) {
         if(err) {
             res.send(err);
+            return;
         }
-        res.json(user);
+        var token = jwt.sign({ id: user._id }, config.app.secret, { expiresIn: 86400 });
+        res.json({
+            user: user,
+            auth: true,
+            token: token
+        });
     });
 }
 
