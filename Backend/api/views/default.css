@@ -6,7 +6,16 @@ p {
     margin-top: 1rem;
 }
 
-#header-div p {
+#title {
+    font-size: 400%;
+    color: white;
+}
+
+#header-div {
+    text-align: center;
+}
+
+#header-div p:not(.not-bold) {
     font-weight: bold;
 }
 
@@ -14,8 +23,26 @@ p {
     list-style-type: none;
 }
 
+#footer {
+    height: 4rem;
+}
+
+#footer-row {
+    text-align: center;
+    color: #909497;
+    font-family: consolas;
+}
+
+#github-link {
+    text-decoration: underline;
+    color: inherit;
+}
+
 .jumbotron {
     text-align: center;
+    background-color: black;
+    border-radius: 0%;
+    box-shadow: 5px 5px 10px #d3d6d8;
 }
 
 .code {
@@ -30,4 +57,5 @@ p {
     padding: 2rem;
     border-radius: 2%;
     height: 90%;
+    box-shadow: 5px 5px 10px #d3d6d8;
 }

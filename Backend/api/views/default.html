@@ -7,49 +7,101 @@
 </head>
 <body>
 
-    <div class="jumbotron">
-        
-        <h1 id="apiroutes">Comodo Web API</h2>
-
-        <hr>
-
-        <p>All routes listed below follow the same pattern: </p>
-
-        <div class="container-fluid" id="header-div">
-            <div class="row">
-                <div class="col-xl-6">
-                    <p>/api/route</p>
-
-                    <ul>
-                    <li>GET: gets all entries</li>
-                    <li>POST: creates an entry</li>
-                    </ul>                
-                </div>
-                <div class="col-xl-6">
-                    <p>/api/route/id</p>
-
-                    <ul>
-                    <li>GET: gets entry with appropriate id</li>
-            
-                    <li>PUT: updates entry with appropriate id</li>
-            
-                    <li>DELETE: deletes entry with appropriate id</li>
-                    </ul>                
-                </div>
-            </div>
-        </div>
-
+    <div class="jumbotron">        
+        <h1 id="title">Comodo Web API</h2>
     </div>
 
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card">
+                    <h3 id="users">
+                        <a href="/login">
+                            /login
+                        </a>
+                    </h3>
+        
+                    <hr>
 
+                    <p>Sample object for POST (send either email or username):</p>
+            
+                    <div class="code">
+                        <code>
+    {
+        "email": "john.doe@example.com",
+        "username": "johndoe",
+        "password": "mypassword"
+    }
+                        </code>
+                    </div>
 
+                    <p>This is the only way to obtain a token.</p>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card">
+                    <h3 id="users">
+                        <a href="/register">
+                            /register
+                        </a>
+                    </h3>
+        
+                    <hr>
+
+                    <p>Sample object for POST:</p>
+            
+                    <div class="code">
+                        <code>
+    {
+        "fullName": "John Doe",
+        "email": "john.doe@example.com",
+        "username": "johndoe",
+        "password": "mypassword",
+        "role": "member",
+        "organisationId": "existingOrganisationId"
+    }
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="header-div">
+        <hr>
+        <div class="row">
+            <div class="col-xl-4"></div>
+            <div class="col-xl-4">
+                <p class="not-bold">All routes listed below follow the same pattern.</p>
+            
+                <p>/api/route</p>
+
+                <ul>
+                <li>GET: gets all entries</li>
+                <li>POST: creates an entry</li>
+                </ul>                
+            
+                <p>/api/route/id</p>
+
+                <ul>
+                <li>GET: gets entry with appropriate id</li>
+        
+                <li>PUT: updates entry with appropriate id</li>
+        
+                <li>DELETE: deletes entry with appropriate id</li>
+                </ul>                
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <hr>
         <div class="row">
             <div class="col-xl-6 col-md-12">
                 <div class="card">
                     <h3 id="users">
                         <a href="/api/users">
-                            /users
+                            /api/users
                         </a>
                     </h3>
         
@@ -79,7 +131,7 @@
                 <div class="card">
                     <h3 id="resources">
                         <a href="/api/resources">
-                            /resources
+                            /api/resources
                         </a>
                     </h3>
 
@@ -105,7 +157,7 @@
                 <div class="card">
                     <h3 id="resourcetypes">
                         <a href="/api/resourcetypes">
-                            /resourcetypes
+                            /api/resourcetypes
                         </a>
                     </h3>
 
@@ -129,7 +181,7 @@
                 <div class="card">
                     <h3 id="organisations">
                         <a href="/api/organisations">
-                            /organisations
+                            /api/organisations
                         </a>
                     </h3>
 
@@ -151,5 +203,18 @@
         </div>
 
     </div>
+
+    <footer id="footer">
+        <div class="container-fluid">
+            <hr>
+            <div class="row">
+                <div class="col-xl-4"></div>
+                <div class="col-xl-4 col-xl-offset-4" id="footer-row">
+                    Lamija Lemeš, 2018 | <a href="https://github.com/llemes/Comodo/tree/master/Backend" id="github-link">Source</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
