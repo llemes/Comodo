@@ -1,8 +1,12 @@
 var mongoose = require('mongoose');
 var Resource = mongoose.model('Resource');
 
+// filter all by organisation id
+
 exports.list_all_resources = function(req, res) {
-    Resource.find({}, function(err, resource) {
+    Resource.find({
+        organisationId: res.locals.decoded.organisationId
+    }, function(err, resource) {
         if(err) {
             res.send(err);
         }
@@ -11,7 +15,10 @@ exports.list_all_resources = function(req, res) {
 }
 
 exports.read_a_resource = function(req, res) {
-    Resource.findById(req.params.resourceId, function(err, resource) {
+    Resource.findOne({ 
+        _id: req.params.resourceId, 
+        organisationId: res.locals.decoded.organisationId 
+    }, function(err, resource) {
         if(err) {
             res.send(err);
         }
@@ -21,6 +28,7 @@ exports.read_a_resource = function(req, res) {
 
 exports.create_a_resource = function(req, res) {
     var newResource = new Resource(req.body);
+    newResource.organisationId = res.locals.decoded.organisationId;
     newResource.save(function(err, resource) {
         if(err) {
             res.send(err);
@@ -30,7 +38,10 @@ exports.create_a_resource = function(req, res) {
 }
 
 exports.update_a_resource = function(req, res) {
-    Resource.findByIdAndUpdate(req.params.resourceId, req.body, { new: true }, function(err, resource) {
+    Resource.findOneAndUpdate({ 
+        _id: req.params.resourceId, 
+        organisationId: res.locals.decoded.organisationId 
+    }, req.body, { new: true }, function(err, resource) {
         if(err) {
             res.send(err);
         }
@@ -39,7 +50,10 @@ exports.update_a_resource = function(req, res) {
 }
 
 exports.delete_a_resource = function(req, res) {
-    Resource.findByIdAndRemove(req.params.resourceId, function(err, resource) {
+    Resource.findOneAndRemove({ 
+        _id: req.params.resourceId, 
+        organisationId: res.locals.decoded.organisationId 
+    }, function(err, resource) {
         if(err) {
             res.send(err);
         }

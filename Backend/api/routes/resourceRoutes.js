@@ -1,8 +1,11 @@
+const accessRules = require('./access-rules/resourceAccess');
+
 module.exports = function(router, route) {
     route += '/resources';
 
     var resourceList = require('../controllers/resourceController');
 
+    // define routes
     router.get(route, resourceList.list_all_resources);
     router.post(route, resourceList.create_a_resource);
     

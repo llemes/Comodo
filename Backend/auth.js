@@ -34,12 +34,16 @@ module.exports = function(app) {
             }
             res.json(user);
         });
-    })
+    });
 
     // middleware
-    app.use(/\/((?!api\/organisations).)*/, function(req, res, next) {
+    app.use('/', function(req, res, next) {
+        var token = req.headers['x-access-token'];
 
-        var token = req.headers['x-access-token']
+        if(req.originalUrl === '/api/organisations') {
+            return next();
+        }
+
         if (!token) {
             return res.status(401).send({ auth: false, message: 'No token provided.' });
         }
@@ -47,6 +51,7 @@ module.exports = function(app) {
         jwt.verify(token, config.app.secret, function(err, decoded) {
             if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
             
+            res.locals.decoded = decoded;
             return next();
         });
         
