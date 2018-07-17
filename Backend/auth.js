@@ -18,7 +18,7 @@ module.exports = function(app) {
             var passwordValid = user.verifyPassword(req.body.password); 
             if (!passwordValid) return res.status(401).send({ auth: false, token: null });
 
-            var token = jwt.sign({ id: user._id }, config.app.secret, { expiresIn: 86400 });
+            var token = jwt.sign({ id: user._id, organisationId: user.organisationId, role: user.role }, config.app.secret, { expiresIn: 86400 });
 
             res.status(200).send({ auth: true, token: token });
         });
@@ -37,7 +37,7 @@ module.exports = function(app) {
     })
 
     // middleware
-    app.use('/', function(req, res, next) {
+    app.use(/\/((?!api\/organisations).)*/, function(req, res, next) {
 
         var token = req.headers['x-access-token']
         if (!token) {
@@ -48,7 +48,6 @@ module.exports = function(app) {
             if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
             
             return next();
-            //res.status(200).send(decoded);
         });
         
     });

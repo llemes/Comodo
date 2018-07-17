@@ -1,14 +1,12 @@
-module.exports = function(app, route) {
+module.exports = function(router, route) {
     route += '/resourcetypes';
 
     var resourceTypeList = require('../controllers/resourceTypeController');
 
-    app.route(route)
-        .get(resourceTypeList.list_all_resource_types)
-        .post(resourceTypeList.create_a_resource_type);
+    router.get(route, resourceTypeList.list_all_resource_types);
+    router.post(route, resourceTypeList.create_a_resource_type);
 
-    app.route(route + '/:resourceTypeId')
-        .get(resourceTypeList.read_a_resource_type)
-        .put(resourceTypeList.update_a_resource_type)
-        .delete(resourceTypeList.delete_a_resource_type);
+    router.get(route + '/:resourceTypeId', resourceTypeList.read_a_resource_type);
+    router.put(route + '/:resourceTypeId', resourceTypeList.update_a_resource_type);
+    router.delete(route + '/:resourceTypeId', resourceTypeList.delete_a_resource_type);
 }

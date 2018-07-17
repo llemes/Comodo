@@ -1,14 +1,12 @@
-module.exports = function(app, route) {
+module.exports = function(router, route) {
     route += '/users';
 
     var userList = require('../controllers/userController');
 
-    app.route(route)
-        .get(userList.list_all_users)
-        .post(userList.create_a_user);
+    router.get(route, userList.list_all_users)
+    router.post(route, userList.create_a_user);
         
-    app.route(route + '/:userId')
-        .get(userList.read_a_user)
-        .put(userList.update_a_user)
-        .delete(userList.delete_a_user);
+    router.get(route + '/:userId', userList.read_a_user);
+    router.put(route + '/:userId', userList.update_a_user);
+    router.delete(route + '/:userId', userList.delete_a_user);
 }

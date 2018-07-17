@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const router = express.Router();
 
 // load config and connect to database
 require('dotenv').config();
@@ -18,7 +19,8 @@ auth(app);
 
 // routes
 const routes = require('./api/routes/routes');
-routes(app);
+routes(router);
+app.use(router);
 
 // start server
 const port = process.env.PORT || 8080;
