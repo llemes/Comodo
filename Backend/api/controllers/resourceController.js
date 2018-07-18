@@ -8,7 +8,7 @@ exports.list_all_resources = function(req, res) {
         organisationId: res.locals.decoded.organisationId
     }, function(err, resource) {
         if(err) {
-            res.send(err);
+            return res.send(err);
         }
         res.json(resource);
     });
@@ -20,7 +20,7 @@ exports.read_a_resource = function(req, res) {
         organisationId: res.locals.decoded.organisationId 
     }, function(err, resource) {
         if(err) {
-            res.send(err);
+            return res.send(err);
         }
         res.json(resource);
     });
@@ -31,7 +31,7 @@ exports.create_a_resource = function(req, res) {
     newResource.organisationId = res.locals.decoded.organisationId;
     newResource.save(function(err, resource) {
         if(err) {
-            res.send(err);
+            return res.send(err);
         }
         res.json(resource);
     })
@@ -43,7 +43,7 @@ exports.update_a_resource = function(req, res) {
         organisationId: res.locals.decoded.organisationId 
     }, req.body, { new: true }, function(err, resource) {
         if(err) {
-            res.send(err);
+            return res.send(err);
         }
         res.json(resource);
     });
@@ -55,7 +55,7 @@ exports.delete_a_resource = function(req, res) {
         organisationId: res.locals.decoded.organisationId 
     }, function(err, resource) {
         if(err) {
-            res.send(err);
+            return res.send(err);
         }
         res.json(resource);
     });
