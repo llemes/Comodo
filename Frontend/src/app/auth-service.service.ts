@@ -9,6 +9,6 @@ export class AuthService {
     }
       
     login(username:string, password:string ) {
-        return this.http.post('http://comodo-backend.herokuapp.com/login', {username, password});
+        return this.http.post('http://localhost:8080/login', {username, password});
     }
 }

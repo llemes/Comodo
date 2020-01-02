@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../auth-service.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private cookieService: CookieService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -23,8 +25,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     let loginObject = this.loginForm.value;;
-    this.authService.login(loginObject.username, loginObject.password).subscribe(() => {
-      console.log('okay');
+    this.authService.login(loginObject.username, loginObject.password).subscribe((res:any) => {
+      this.cookieService.set( 'token', res.token );
     }); 
   }
 
