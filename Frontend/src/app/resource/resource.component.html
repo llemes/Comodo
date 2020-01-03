@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 offset-md-4">
+    <div class="col-md-4 offset-md-1">
       <h1>Resources</h1>
     </div>
-    <div class="col-md-4">
-      <button class="btn btn-success float-right" (click)="addResourceModal()" >Add resource</button>
+    <div class="col-md-6 offset-md-1">
+      <h1>Add resource</h1>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-6 offset-md-3 list-group">
+    <div class="col-md-4 offset-md-1 list-group">
       <div *ngFor="let resource of resources">
           <a class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
@@ -19,6 +19,22 @@
             <p class="mb-1">RESOURCE TYPE: <b>{{resource?.resourceType?.name}}</b></p>
             <p class="mb-1">ORGANIZATION: <b>{{resource?.organization?.name}}</b></p>
           </a>
+      </div>
+    </div>
+    <div class="col-md-6 offset-md-1 add-resource-col">
+      <div class="add-resource">
+        <input type="text" class="form-control" placeholder="Write resource name" [(ngModel)]="resourceNameNew" (change)="areFieldsValid = true">
+        <select class="form-control choose-resource-type" id="resource-type" [(ngModel)]="selectedResourceTypeId" (change)="areFieldsValid = true">
+          <option value="" disabled selected>Choose resource type</option>
+          <option value="{{ type._id }}" *ngFor="let type of resourceTypes">{{ type.name }}</option>
+        </select>
+
+        <div class="error-div">
+          <p class="error-p" *ngIf="!areFieldsValid">Populate all fields.</p>
+        </div>
+        <div class="button-div">
+          <button class="btn btn-success" (click)="addResource()" >Add resource</button>
+        </div>
       </div>
     </div>
   </div>

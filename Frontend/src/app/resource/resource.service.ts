@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { ResourceComponent } from './resource.component';
+import { Resource } from '../models/resource.model';
+import { RequestOptions, Headers } from '@angular/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +10,7 @@ import { HttpClient } from "@angular/common/http";
 export class ResourceService {
 
   url = 'http://localhost:8080/api/';
+  options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
   constructor(private http: HttpClient) {
   }
 
@@ -26,5 +30,9 @@ export class ResourceService {
 
   deleteResource(id: string){
     return this.http.delete(this.url + "resources/" + id);
+  }
+
+  saveResource(model: Resource){
+    return this.http.post(this.url + "resources", JSON.stringify(model), this.options);
   }
 }

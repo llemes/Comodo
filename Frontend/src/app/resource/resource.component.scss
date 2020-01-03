@@ -11,3 +11,31 @@ h1{
     text-align: center;
     padding-bottom: 10px;
 }
+
+.add-resource{
+    padding: 50px 120px;
+}
+
+.button-div{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.add-resource{
+    input, select{
+        margin-top: 10px;
+    }
+}
+
+.add-resource-col{
+    border-left: 2px solid white;
+}
+
+.error-div{
+    height: 15px;
+    padding-left: 5px;
+
+    .error-p{
+        color:red;
+    }
+}

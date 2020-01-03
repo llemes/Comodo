@@ -17,6 +17,9 @@ export class ResourceComponent implements OnInit {
   resourceTypes: ResourceType[];
   organizations: Organization[];
 
+  selectedResourceTypeId : string = "";
+  resourceNameNew: string = "";
+  areFieldsValid: boolean = true;
 
   constructor(private _resourceService: ResourceService) { }
 
@@ -56,8 +59,25 @@ export class ResourceComponent implements OnInit {
     })
   }
 
-  addResourceModal(){
-    
+  addResource(){
+    if (this.selectedResourceTypeId == "" || this.resourceNameNew == ""){
+      this.areFieldsValid = false;
+      return;
+    }
+
+    var newResource: Resource = new Resource();
+    newResource.name = this.resourceNameNew;
+    newResource.resourceTypeId = this.selectedResourceTypeId;
+    newResource.occupied = false;
+
+    this._resourceService.saveResource(newResource).subscribe((res:Resource) => {
+      res.resourceType = this.resourceTypes.find(x => res.resourceTypeId == x._id);
+      res.organization = this.organizations.find(x => res.organisationId == x._id);
+      this.resources.push(res);
+    });
+
+    this.selectedResourceTypeId = "";
+    this.resourceNameNew = "";
   }
 
 

@@ -29,12 +29,18 @@ exports.read_a_resource = function(req, res) {
 exports.create_a_resource = function(req, res) {
     var newResource = new Resource(req.body);
     newResource.organisationId = res.locals.decoded.organisationId;
-    newResource.save(function(err, resource) {
-        if(err) {
-            return res.send(err);
-        }
-        res.json(resource);
-    })
+    
+    if (newResource.name === undefined || newResource.name == '' || 
+        newResource.resourceTypeId === undefined || newResource.name == '')
+        res.json("Populate all required fields");
+    else{
+        newResource.save(function(err, resource) {
+            if(err) {
+                return res.send(err);
+            }
+            res.json(resource);
+        })
+    }
 }
 
 exports.update_a_resource = function(req, res) {
