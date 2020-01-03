@@ -1,6 +1,60 @@
-<div class="jumbotron">
-  <h1>Comodo resource management</h1>
-</div>
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+<body class="app sidebar-show">
+  <header class="app-header navbar">
+    <h1>Comodo resource management</h1>
+    <div class="user-div">
+      <div *ngIf="cookieService.check('username')">
+        <div class="dropdown" id="dropdown" (click)="expandDropdown()">
+          <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{getUsername()}}
+          </button>
+          <div class="dropdown-menu dropdown-menu-right" id="dropdown-menu" aria-labelledby="dropdownMenu">
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="app-body">
+    <div class="sidebar">
+      <nav class="sidebar-nav">
+        <ul class="nav">
+          <li class="nav-title">MENU</li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="nav-icon cui-speedometer"></i> About app
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="!cookieService.check('username')">
+            <a class="nav-link" routerLink="/register">
+              <i class="nav-icon cui-speedometer"></i> Register
+            </a>
+          </li>
+          <li class="nav-item nav-dropdown" *ngIf="!cookieService.check('username')">
+            <a class="nav-link " routerLink="/login">
+              <i class="nav-icon cui-speedometer"></i> Login
+            </a>
+          </li>
+          <li class="nav-item nav-dropdown" *ngIf="cookieService.get('role') == 'admin'">
+            <a class="nav-link " routerLink="/resources">
+              <i class="nav-icon cui-speedometer"></i> Resources
+            </a>
+          </li>
+          <li class="nav-item nav-dropdown" *ngIf="cookieService.get('role') == 'member'">
+            <a class="nav-link " href="#">
+              <i class="nav-icon cui-speedometer"></i> Member meni
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <main class="main container">
+      <router-outlet></router-outlet>
+    </main>
+    <aside class="aside-menu">
+      <!-- Aside menu content here -->
+    </aside>
+  </div>
+  <footer class="app-footer">
+    <!-- Footer content here -->
+  </footer>
+</body>

@@ -7,7 +7,7 @@ module.exports = function(router, route) {
     var resourceList = require('../controllers/resourceController');
 
     // mount middleware
-    router.post(routeWithParam, accessRules.administrator_only);
+    router.post(route, accessRules.administrator_only);
     router.delete(routeWithParam, accessRules.administrator_only);
 
     // define routes

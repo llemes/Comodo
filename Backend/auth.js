@@ -21,7 +21,7 @@ module.exports = function(app) {
 
             var token = jwt.sign({ id: user._id, organisationId: user.organisationId, role: user.role }, config.app.secret, { expiresIn: 86400 });
 
-            res.status(200).send({ auth: true, token: token, expiresAt: moment().add(1, 'days').format() });
+            res.status(200).send({ auth: true, token: token, role: user.role, expiresAt: moment().add(1, 'days').format() });
         });
     });
 

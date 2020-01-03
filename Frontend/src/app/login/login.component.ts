@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
     let loginObject = this.loginForm.value;;
     this.authService.login(loginObject.username, loginObject.password).subscribe((res:any) => {
       this.cookieService.set( 'token', res.token );
+      this.cookieService.set( 'username', loginObject.username );
+      this.cookieService.set( 'role', res.role );
     }); 
   }
 

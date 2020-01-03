@@ -6,22 +6,29 @@ import { AppComponent } from './app.component';
 import { AuthService } from './auth-service.service';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { ReactiveFormsModule } from '../../node_modules/@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '../../node_modules/@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '../../node_modules/@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { ResourceComponent } from './resource/resource.component';
+import { AddResourceComponent } from './resource/add-resource/add-resource.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ResourceComponent,
+    AddResourceComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [AuthService,
   {
@@ -29,7 +36,11 @@ import { CookieService } from 'ngx-cookie-service';
     useClass: TokenInterceptorService,
     multi: true 
   },
-  CookieService],
-  bootstrap: [AppComponent]
+  CookieService
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AddResourceComponent
+  ]
 })
 export class AppModule { }
