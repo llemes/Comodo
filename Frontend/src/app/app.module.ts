@@ -10,9 +10,10 @@ import { ReactiveFormsModule, FormsModule } from '../../node_modules/@angular/fo
 import { HttpClientModule, HTTP_INTERCEPTORS } from '../../node_modules/@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { ResourceComponent } from './resource/resource.component';
-import { AddResourceComponent } from './resource/add-resource/add-resource.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieService } from 'ngx-cookie-service';
+import { AboutAppComponent } from './about-app/about-app.component';
+import { BookResourceComponent } from './resource/book-resource/book-resource.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CookieService } from 'ngx-cookie-service';
     LoginComponent,
     RegistrationComponent,
     ResourceComponent,
-    AddResourceComponent
+    AboutAppComponent,
+    BookResourceComponent
   ],
   imports: [
     BrowserModule,
@@ -39,8 +41,5 @@ import { CookieService } from 'ngx-cookie-service';
   CookieService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [
-    AddResourceComponent
-  ]
 })
 export class AppModule { }

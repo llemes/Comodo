@@ -44,15 +44,44 @@ exports.create_a_resource = function(req, res) {
 }
 
 exports.update_a_resource = function(req, res) {
-    Resource.findOneAndUpdate({ 
+    //can update all fields
+    if (res.locals.decoded.role == 'admin'){
+        Resource.findOneAndUpdate({ 
         _id: req.params.resourceId, 
         organisationId: res.locals.decoded.organisationId 
-    }, req.body, { new: true }, function(err, resource) {
-        if(err) {
-            return res.send(err);
-        }
-        res.json(resource);
-    });
+        }, req.body, { new: true }, function(err, resource) {
+            if(err) {
+                return res.send(err);
+            }
+            res.json(resource);
+        });
+    }
+    else{
+        //can only update occupied field
+        var dbResource;
+        Resource.findOne({ 
+            _id: req.params.resourceId, 
+            organisationId: res.locals.decoded.organisationId 
+        }, function(err, resource) {
+            if(err) {
+                return res.send(err);
+            }
+            dbResource = resource;
+            //change occupied
+            dbResource.occupied = req.body.occupied;
+            
+            Resource.findOneAndUpdate({ 
+                _id: req.params.resourceId, 
+                organisationId: res.locals.decoded.organisationId 
+                }, dbResource, { new: true }, function(err, resource) {
+                    if(err) {
+                        return res.send(err);
+                    }
+                    res.json(resource);
+                });
+        });
+    }
+
 }
 
 exports.delete_a_resource = function(req, res) {

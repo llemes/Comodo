@@ -20,7 +20,7 @@
         <ul class="nav">
           <li class="nav-title">MENU</li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" routerLink="/about">
               <i class="nav-icon cui-speedometer"></i> About app
             </a>
           </li>
@@ -40,8 +40,8 @@
             </a>
           </li>
           <li class="nav-item nav-dropdown" *ngIf="cookieService.get('role') == 'member'">
-            <a class="nav-link " href="#">
-              <i class="nav-icon cui-speedometer"></i> Member meni
+            <a class="nav-link " routerLink="/book-resource">
+              <i class="nav-icon cui-speedometer"></i> Book resources
             </a>
           </li>
         </ul>

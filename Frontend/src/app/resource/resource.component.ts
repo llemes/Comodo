@@ -3,7 +3,6 @@ import { ResourceService } from './resource.service';
 import { Resource } from '../models/resource.model';
 import { ResourceType } from '../models/resourcetype.model';
 import { Organization } from '../models/organization.model';
-import { AddResourceComponent } from './add-resource/add-resource.component';
 
 
 @Component({

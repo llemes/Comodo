@@ -35,4 +35,11 @@ export class ResourceService {
   saveResource(model: Resource){
     return this.http.post(this.url + "resources", JSON.stringify(model), this.options);
   }
+
+  bookResource(resourceId: string){
+    var obj = {
+      occupied: true
+    }
+    return this.http.put(this.url + "resources/" + resourceId, JSON.stringify(obj), this.options)
+  }
 }

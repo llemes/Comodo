@@ -1,0 +1,16 @@
+<h2>Book a resource</h2>
+
+<div class="row">
+  <div class="col-md-4 offset-md-4 list-group">
+    <div *ngFor="let resource of resources">
+        <a class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{resource?.name}}</h5>
+            <button *ngIf= "!resource.occupied" class="btn btn-success" (click)="bookResource(resource._id)">BOOK</button>
+          </div>
+          <p class="mb-1">RESOURCE TYPE: <b>{{resource?.resourceType?.name}}</b></p>
+          <p class="mb-1">ORGANIZATION: <b>{{resource?.organization?.name}}</b></p>
+        </a>
+    </div>
+  </div>
+</div>
