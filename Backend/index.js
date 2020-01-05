@@ -3,6 +3,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const router = express.Router();
 const cors = require('cors');
+const https = require('https')
+const fs = require('fs')
 
 app.use(cors());
 
@@ -27,5 +29,13 @@ app.use(router);
 
 // start server
 const port = process.env.PORT || 8080;
-app.listen(port);
+
+// we will pass our 'app' to 'https' server
+https.createServer({
+    key: fs.readFileSync('./key.pem'),
+    cert: fs.readFileSync('./cert.pem'),
+    passphrase: 'TSTim'
+}, app)
+.listen(port);
+
 console.log('Listening on port ' + port);

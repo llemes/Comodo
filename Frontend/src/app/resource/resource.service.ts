@@ -9,7 +9,7 @@ import { RequestOptions, Headers } from '@angular/http';
 })
 export class ResourceService {
 
-  url = 'http://localhost:8080/api/';
+  url = 'https://localhost:8080/api/';
   options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
   constructor(private http: HttpClient) {
   }

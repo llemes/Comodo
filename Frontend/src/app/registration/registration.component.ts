@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  url = 'http://localhost:8080/';
+  url = 'https://localhost:8080/';
   registerForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
