@@ -5,13 +5,15 @@ import {RegistrationComponent} from './registration/registration.component';
 import { ResourceComponent } from './resource/resource.component';
 import { AboutAppComponent } from './about-app/about-app.component';
 import { BookResourceComponent } from './resource/book-resource/book-resource.component';
+import { LogsComponent } from './logs/logs.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegistrationComponent},
   {path:'resources', component: ResourceComponent},
   {path: 'about', component: AboutAppComponent},
-  {path:'book-resource', component: BookResourceComponent}
+  {path:'book-resource', component: BookResourceComponent},
+  {path: 'logs', component: LogsComponent}
 ];
 
 @NgModule({
@@ -19,5 +21,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {
-  
+
 }

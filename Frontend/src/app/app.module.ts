@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieService } from 'ngx-cookie-service';
 import { AboutAppComponent } from './about-app/about-app.component';
 import { BookResourceComponent } from './resource/book-resource/book-resource.component';
+import { LogsComponent } from './logs/logs.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BookResourceComponent } from './resource/book-resource/book-resource.co
     RegistrationComponent,
     ResourceComponent,
     AboutAppComponent,
-    BookResourceComponent
+    BookResourceComponent,
+    LogsComponent
   ],
   imports: [
     BrowserModule,
