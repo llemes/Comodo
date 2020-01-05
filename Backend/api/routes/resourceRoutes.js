@@ -14,7 +14,7 @@ module.exports = function(router, route) {
     router.get(route, resourceList.list_all_resources);
     router.post(route, resourceList.create_a_resource);
     
-    router.get(routeWithParam, resourceList.read_a_resource);
+    // router.get(routeWithParam, resourceList.read_a_resource);
     router.put(routeWithParam, resourceList.update_a_resource);
     router.delete(routeWithParam, resourceList.delete_a_resource);
 }

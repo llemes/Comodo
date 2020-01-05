@@ -41,9 +41,9 @@ module.exports = function(app) {
     app.use('/', function(req, res, next) {
         var token = req.headers['x-access-token'];
 
-        if(req.originalUrl === '/api/organisations') {
-            return next();
-        }
+        // if(req.originalUrl === '/api/organisations') {
+        //     return next();
+        // }
 
         if (!token) {
             return res.status(401).send({ auth: false, message: 'No token provided.' });
