@@ -5,7 +5,7 @@ import {RegistrationComponent} from './registration/registration.component';
 import { ResourceComponent } from './resource/resource.component';
 import { AboutAppComponent } from './about-app/about-app.component';
 import { BookResourceComponent } from './resource/book-resource/book-resource.component';
-import { LogsComponent } from './logs/logs.component';
+import { LogsComponent } from './loggs/logs.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},

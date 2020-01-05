@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Logs</h1>
+  <div class="row">
+    <div class="col-md-11 offset-md-1 list-group">
+      <div *ngFor="let log of logs">
+          <a class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{log.username}}</h5>
+            </div>
+            <p class="mb-1">ACTION: <b>{{log.action}}</b></p>
+            <p class="mb-1">Time: <b>{{log.time | date}}</b></p>
+          </a>
+      </div>
+    </div>
+</div>

@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieService } from 'ngx-cookie-service';
 import { AboutAppComponent } from './about-app/about-app.component';
 import { BookResourceComponent } from './resource/book-resource/book-resource.component';
-import { LogsComponent } from './logs/logs.component';
+import { LogsComponent } from './loggs/logs.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { LogsComponent } from './logs/logs.component';
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
-    multi: true 
+    multi: true
   },
   CookieService
   ],
