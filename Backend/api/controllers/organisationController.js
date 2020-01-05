@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Organisation = mongoose.model('Organisation');
+var Log = mongoose.model('Log')
 
 exports.list_all_organisations = function(req, res) {
     Organisation.find({}, function(err, organisation) {
@@ -25,7 +26,17 @@ exports.create_an_organization = function(req, res) {
         if(err) {
             return res.send(err);
         }
-        res.json(organisation);
+        var newLog = new Log({
+            username: res.locals.decoded.username,
+            action: "Create an organisation",
+            time: Date.now
+        });
+        newLog.save(function(err, organisation) {
+            if(err) {
+                return res.send(err);
+            }
+            res.json(organisation);
+        });
     });
 }
 

@@ -19,7 +19,7 @@ module.exports = function(app) {
             var passwordValid = user.verifyPassword(req.body.password); 
             if (!passwordValid) return res.status(401).send({ auth: false, token: null });
 
-            var token = jwt.sign({ id: user._id, organisationId: user.organisationId, role: user.role }, config.app.secret, { expiresIn: 86400 });
+            var token = jwt.sign({ id: user._id, organisationId: user.organisationId, role: user.role, username: user.username }, config.app.secret, { expiresIn: 86400 });
 
             res.status(200).send({ auth: true, token: token, role: user.role, expiresAt: moment().add(1, 'days').format() });
         });

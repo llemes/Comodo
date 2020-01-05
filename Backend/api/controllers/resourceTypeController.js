@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var ResourceType = mongoose.model('ResourceType');
+var Log = mongoose.model('Log');
 
 exports.list_all_resource_types = function(req, res) {
     ResourceType.find({}, function(err, resourceType) {
@@ -25,7 +26,18 @@ exports.create_a_resource_type = function(req, res) {
         if(err) {
             return res.send(err);
         }
-        res.json(resourceType);
+        var newLog = new Log({
+            username: res.locals.decoded.username + " ",
+            action: "Create an resource type",
+            time: new Date().toLocaleDateString()
+        });
+        newLog.save(function(err, log) {
+            if(err){
+                return res.send(err);
+            }
+            
+            res.json(resourceType);
+        });
     });
 }
 
