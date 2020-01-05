@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Resource = mongoose.model('Resource');
+var Log = mongoose.model('Log')
 
 // filter all by organisation id
 
@@ -27,6 +28,7 @@ exports.read_a_resource = function(req, res) {
 }
 
 exports.create_a_resource = function(req, res) {
+    console.log(res.locals.decoded)
     var newResource = new Resource(req.body);
     newResource.organisationId = res.locals.decoded.organisationId;
     
@@ -38,9 +40,21 @@ exports.create_a_resource = function(req, res) {
             if(err) {
                 return res.send(err);
             }
-            res.json(resource);
-        })
+            var newLog = new Log({
+                username: res.locals.decoded.username + " ",
+                action: "Create an resource",
+                time: new Date().toLocaleDateString()
+            });
+            newLog.save(function(err, log) {
+                if(err){
+                    return res.send(err);
+                }
+                
+                res.json(resource);
+            });
+        });
     }
+    
 }
 
 exports.update_a_resource = function(req, res) {

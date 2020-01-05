@@ -9,3 +9,4 @@ const Organisation = require('./api/models/organisation');
 const Resource = require('./api/models/resource');
 const ResourceType = require('./api/models/resourceType');
 const User = require('./api/models/user');
+const Log = require('./api/models/log')
