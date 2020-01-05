@@ -12,11 +12,13 @@ module.exports = function(app) {
         if(req.body.username) query.username = req.body.username;
         if(req.body.email) query.email = req.body.email;
 
-        User.findOne(query, function(err,user) {
+        User.findOne(query, async function(err,user) {
+
             if (err) return res.status(500).send('Error on the server.'); 
             if (!user) return res.status(404).send('No user found.'); 
+            if (!req.body.password) return res.status(400).send('Password cannot be empty');
 
-            var passwordValid = user.verifyPassword(req.body.password); 
+            var passwordValid = await user.verifyPassword(req.body.password); 
             if (!passwordValid) return res.status(401).send({ auth: false, token: null });
 
             var token = jwt.sign({ id: user._id, organisationId: user.organisationId, role: user.role, username: user.username }, config.app.secret, { expiresIn: 86400 });
