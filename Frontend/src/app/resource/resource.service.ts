@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ResourceService {
 
-  url = environment.apiUrl + '/api/';
+  url = environment.apiUrl + 'api/';
   options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
   constructor(private http: HttpClient) {
   }
