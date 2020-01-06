@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AppComponent {
   
-  constructor(private cookieService: CookieService,
+  constructor(public cookieService: CookieService,
               private router: Router){
   }
 
