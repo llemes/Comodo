@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ResourceComponent } from './resource.component';
 import { Resource } from '../models/resource.model';
 import { RequestOptions, Headers } from '@angular/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResourceService {
 
-  url = 'https://localhost:8080/api/';
+  url = environment.apiUrl + '/api/';
   options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
   constructor(private http: HttpClient) {
   }

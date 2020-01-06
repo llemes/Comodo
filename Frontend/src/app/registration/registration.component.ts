@@ -4,6 +4,7 @@ import { AuthService } from '../auth-service.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-registration',
@@ -11,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  url = 'https://localhost:8080/';
+  url = environment.apiUrl;
   registerForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
